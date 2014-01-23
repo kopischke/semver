@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.7.3
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1>Semantic Versioning library</h1>
+
+<p>Create and manage software version information according to the <a href="http://semver.org/">Semantic Versioning specification</a>. <code>SemanticVersion</code> objects will validate against, and compare to, anything resembling a semantic version String after conversion (“resembling” because trailing 0s can be omitted, i.e. “4” will be equivalent to “4.0.0”):</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>SemanticVersion</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1.1.2</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>&lt;</span> <span class='float'>1.2</span>                   <span class='comment'># =&gt; true
+</span><span class='const'>SemanticVersion</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='float'>1.2</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1.2.0</span><span class='tstring_end'>&#39;</span></span>                  <span class='comment'># =&gt; true
+</span><span class='const'>SemanticVersion</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2.0+b.212</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2.0.0</span><span class='tstring_end'>&#39;</span></span>          <span class='comment'># =&gt; true
+</span><span class='const'>SemanticVersion</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2.0-pre.1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>&lt;</span> <span class='int'>2</span>                 <span class='comment'># =&gt; true
+</span><span class='const'>SemanticVersion</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='const'>SemanticVersion</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2.19</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; false
+</span></code></pre>
+
+<p>Note build and prerelease metadata is retained, but not used in comparisons.</p>
+
+<p>SemanticVersion versions can be bumped in a spec conforming fashion:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>SemanticVersion</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1.1.2</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_bump'>bump</span><span class='period'>.</span><span class='id identifier rubyid_to_full_version'>to_full_version</span>         <span class='comment'># =&gt; &quot;1.1.3&quot;
+</span><span class='const'>SemanticVersion</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1.1.2</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_bump'>bump</span><span class='lparen'>(</span><span class='symbol'>:minor</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_full_version'>to_full_version</span> <span class='comment'># =&gt; &quot;1.2.0&quot;
+</span><span class='const'>SemanticVersion</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1.1.2</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_bump'>bump</span><span class='lparen'>(</span><span class='symbol'>:major</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_full_version'>to_full_version</span> <span class='comment'># =&gt; &quot;2.0.0&quot;
+</span><span class='id identifier rubyid_with_pre_info'>with_pre_info</span> <span class='op'>=</span> <span class='const'>SemanticVersion</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1.0-pre</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_with_pre_info'>with_pre_info</span><span class='period'>.</span><span class='id identifier rubyid_to_full_version'>to_full_version</span>                             <span class='comment'># =&gt; &quot;1.0.0-pre&quot;
+</span><span class='id identifier rubyid_with_pre_info'>with_pre_info</span><span class='period'>.</span><span class='id identifier rubyid_bump'>bump</span><span class='lparen'>(</span><span class='symbol'>:minor</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_full_version'>to_full_version</span>                <span class='comment'># =&gt; &quot;1.1.0&quot;
+</span></code></pre>
+</div></div>
+
+    <div id="footer">
+  Generated on Thu Jan 23 01:29:25 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.3 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>
