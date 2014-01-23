@@ -2,30 +2,8 @@
 
 # Semantic Versioning conforming version class.
 #
-# A SemanticVersion object will validate (and compare to) anything resembling
-# a semantic version String after conversion (“resembling” because trailing 0s
-# can be omitted, i.e. “4” will be equivalent to “4.0.0”).
-#
-# @example Creating and comparing semantic versions:
-#   SemanticVersion.new('1.1.2') < 1.2                   # => true
-#   SemanticVersion.new(1.2) == '1.2.0'                  # => true
-#   SemanticVersion.new('2.0+b.212') == '2.0.0'          # => true
-#   SemanticVersion.new('2.0-pre.1') < 2                 # => true
-#   SemanticVersion.new(1) > SemanticVersion.new('2.19') # => false
-#
-# SemanticVersion versions can be bumped in a spec conforming fashion.
-#
-# @example Bumping versions:
-#   SemanticVersion.new('1.1.2').bump.to_full_version         # => "1.1.3"
-#   SemanticVersion.new('1.1.2').bump(:minor).to_full_version # => "1.2.0"
-#   SemanticVersion.new('1.1.2').bump(:major).to_full_version # => "2.0.0"
-#   with_pre_info = SemanticVersion.new('1.0-pre')
-#   with_pre_info.to_full_version                             # => "1.0.0-pre"
-#   with_pre_info.bump(:minor).to_full_version                # => "1.1.0"
-#
 # @see http://semver.org/ Semantic Versioning specification.
 # @note build and prerelease metadata is retained, but not used in comparisons.
-#
 # @author Martin Kopischke
 # @version {SemanticVersion::VERSION}
 class SemanticVersion
